@@ -1,16 +1,16 @@
 class Solution {
     public int numOfUnplacedFruits(int[] fruits, int[] baskets) {
-
-        Set<Integer> filledBasket = new HashSet<Integer>();
+        int filled=0;
         for(int fruit : fruits){
             for(int j=0; j<baskets.length ;j++){
-                if((fruit <= baskets[j]) && !filledBasket.contains(j)){
-                    filledBasket.add(j);
+                if((fruit <= baskets[j])){
+                    filled++;
+                    baskets[j]=0;
                     break;
                 }
             }
         }
 
-        return baskets.length - filledBasket.size();
+        return baskets.length - filled;
     }
 }
